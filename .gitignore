@@ -1,0 +1,5 @@
+main.go
+wireguard-go
+v2ray/*
+redsock/*
+config/*
