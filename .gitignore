@@ -3,3 +3,4 @@ wireguard-go
 v2ray/*
 redsock/*
 config/*
+ovpn/*
