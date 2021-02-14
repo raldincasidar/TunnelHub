@@ -197,23 +197,23 @@ function capitalizeFirstLetter(string) {
 }
 
 setInterval(function(){
-	let textarea1 = document.getElementById('ovpn_textarea');
-	if (textarea1 != undefined)
-		textarea1.scrollTop = textarea1.scrollHeight;
-	let textarea = document.getElementById('http_textarea');
-	if(textarea != undefined)
-		textarea.scrollTop = textarea.scrollHeight;
-},1000);
+	var textarea1 = document.getElementById('ovpn_textarea');
+	textarea1.scrollTop = textarea1.scrollHeight;
+	var textarea = document.getElementById('http_textarea');
+	textarea.scrollTop = textarea.scrollHeight;
+},500);
 
 // Bytes to kilobytes to GB Converter
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 B';
+
 	const k = 1024;
     const dm = decimals < 0 ? 0 : decimals;
     const sizes = ['B/s', 'KB/s', 'MB/s', 'GB/s', 'TB/s', 'PB/s'];
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
+
 // Global Variable for IntervalDataUpdate()
 var recent_status; 
 
@@ -519,4 +519,39 @@ function buttons_mode(mode) {
 		$('#selected_config').formSelect();
 		$('#tunnel_type').formSelect();
 	}
+}
+
+function script_check_update()
+{
+	$('.rcd-update-divs').fadeOut(200, function(){
+		$('.check-update-ui').fadeIn(200);
+	});
+	
+
+	check_update();
+}
+
+function show_new_update_ui(data)
+{
+	$('.rcd-update-divs').fadeOut(200, function(){
+		$('.new_update_v').text(data.version);
+		$('.new_update_label').text(data.label);
+		$('.new_update_date').text(data.date);
+		$('.rcd-new-update').fadeIn(200);
+	});
+}
+
+function show_notice(error_type)
+{
+	$('.rcd-update-divs').fadeOut(200, function(){
+		if (error_type == "no-new-update") { // This means that the software is already up to date and no need update
+			notice = '<a class="btn btn-flat btn-small rcd-green btn-flat white-text" style="border-bottom: 0"><i class="material-icons left">check</i>You\'re at the latest version! </a>';
+		}
+		else if(error_type == "no-connection") { // Can't reach the server
+			notice = '<a class="btn btn-flat btn-small rcd-red btn-flat white-text" style="border-bottom: 0"><i class="material-icons left">perm_scan_wifi</i>Can\'nt reach the server. Check your connection </a> <br><br> <a href="#!" onclick="script_check_update()">Try Again</a>';
+		}
+		$('.insert-notice-update-here').html(notice);
+
+		$('.rcd-latest-version-ui').fadeIn(200);
+	});
 }

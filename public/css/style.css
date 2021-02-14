@@ -737,3 +737,17 @@
 {
 	opacity: 0;
 }
+
+.rcd-check-update-label
+{
+	margin-left: 6px;
+	transform: translateY(-13px);
+	display: inline-block;
+	color: var(--rcd-black);
+	opacity: 0.8;
+}
+
+.rcd-update-divs
+{
+	display: none;
+}

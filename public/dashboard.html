@@ -191,6 +191,17 @@
               </div>
               <div class="rcd-settings-group">
                 <span class="rcd-settings-group-name">System</span>
+                <div class="rcd-settings-box waves-effect" rcd-navigate="info.html">
+                  <p class="rcd-settings-meta rcd-no-margin">
+                    <span class="rcd-settings-meta-title text-darken-1">
+                      System Info & Update
+                    </span>
+                    <br>
+                    <span class="rcd-settings-meta-description">
+                      Check System Version and Update
+                    </span>
+                  </p>
+                </div>
                 <div class="rcd-settings-box waves-effect" onclick="uninstall_router()">
                   <p class="rcd-settings-meta rcd-no-margin">
                     <span class="rcd-settings-meta-title red-text text-darken-1">
@@ -483,6 +494,68 @@
                   <a href="https://phcorner.net/members/lovetacome.468605/" target="_blank" class="btn btn-floating btn-flat transparent waves-effect waves-dark">
                     <i class="material-icons rcd-red-text">link</i>
                   </a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="rcd-page info-page">
+          <div class="row">
+            <div class="guide-section">
+              <div class="col s12">
+                <h5>System Info</h5>
+                <div class="divider"></div>
+                <p>Here you can see the tunnelhub System Information and some router's information</p>
+                <p>
+                  Current Version: <b class="rcd-green-text">v0.9</b> <br>
+                  Current Version Label: <b class="rcd-green-text">Stable</b> <br>
+                  Current Version Release date: <b class="rcd-green-text">February 7, 2021</b> <br>
+                </p>
+              </div>
+              <div class="col s12 rcd-update-divs" style="display: block;">
+                <p>
+                  <a onclick="script_check_update()" class="waves-effect waves-dark btn btn-flat btn-small rcd-green rcd-secondary-btn btn-flat white-text">
+                    Check for update
+                  </a>
+                </p>
+              </div>
+              <div class="col s12 rcd-update-divs check-update-ui">
+                <p>
+                  <div class="preloader-wrapper small active">
+                    <div class="spinner-layer spinner-rcd-red-only">
+                      <div class="circle-clipper left">
+                        <div class="circle"></div>
+                      </div><div class="gap-patch">
+                        <div class="circle"></div>
+                      </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="rcd-check-update-label">Checking for updates</span>
+                </p>
+              </div>
+              <div class="col s12  rcd-update-divs rcd-latest-version-ui">
+                <p class="insert-notice-update-here">
+                  <a class="btn btn-flat btn-small rcd-green btn-flat white-text" style="border-bottom: 0">
+                    <i class="material-icons left">check</i>
+                    You're at the latest version!
+                  </a>
+                </p>
+              </div>
+              <div class="col s12 rcd-update-divs rcd-new-update">
+                <h5>New Update!</h5>
+                <div class="divider"></div>
+                <p>
+                  New Update Version: <b class="rcd-green-text new_update_v">v1.0</b> <br>
+                  New Update Version Label: <b class="rcd-green-text new_update_label">Alpha</b> <br>
+                  New Update Version Release date: <b class="rcd-green-text new_update_date">February 9, 2021</b> <br>
+                </p>
+                <p>
+                  <br>
+                  <a href="#!" class="btn waves-effect waves-light rcd-red white-text btn-flat" style="border-bottom: 0">Update now</a>
                 </p>
               </div>
             </div>

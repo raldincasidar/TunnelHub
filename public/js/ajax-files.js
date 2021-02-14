@@ -1,4 +1,38 @@
-var refresh_rate_ = 1000 //ms
+
+/***************************************************
+
+	USE THIS FUNCTION TO SHOW ERROR OR SUCCESS
+	
+***************************************************/
+
+// show_popup('Your Message ...', 'error') // 'error', 'success', 'warning'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************************
+
+	THESE ARE THE FUNCTIONS THAT REQUIRES DATA
+	             FROM THE SERVER
+	
+***************************************************/
+
+
+
+
+
+var refresh_rate_ = 500 //ms
+
 setInterval(function(){	
 		// AJAX HEREE
 	let url = document.URL;
@@ -20,6 +54,10 @@ setInterval(function(){
 			}
 		});
 	}
+
+	
+
+
 }, refresh_rate_);
 
 
@@ -34,6 +72,25 @@ setInterval(function(){
 	
 
 }, refresh_rate_);
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /***************************************************
@@ -521,7 +578,7 @@ function uninstall_router()
 		$.ajax({
 			url: "/api",
 			method: "POST",
-			data: {action: "uninstall"},
+			data: {uname: username, pword:password, action: "uninstall"},
 			dataType:"JSON",
 			success:function(data){
 				
@@ -529,3 +586,42 @@ function uninstall_router()
 		});
 	}
 }
+
+
+/*
+
+// CHECK UPDATE SCRIPT BUT NO DOWNLOAD, JUST CHECK IF UPDATE IS AVAILABLE
+function check_update()
+{
+	// GET AJAX
+	// Just check for updates but dont download yet
+
+
+
+	// RETURN VALUE HANDLER FUNCTIONS. 
+
+
+	// !! USE ONLY ONE FUNCTION BELOW !!
+
+	// If new update was detected, fetch the meta data and use this function
+	show_new_update_ui({
+		version: UPDATE_VERSION,  // The Update version (eg. v1.1)
+		label: UPDATE_LABEL,      // The update label (eg. Alpha, Beta, Stable)
+		date: RELEASE_DATE        // The release date of the update (eg. January 01, 2021)
+	})
+
+	// If no update was fetch notify the user by using this function
+	show_notice(error_type); 	  // Possible values: 
+	                         	  //           "no-new-update" - If the version is at the latest version and dont need an update
+	                         	  //           "no-connection" - If we can't reach the server
+}
+
+
+
+function download_and_update()
+{
+	// GET AJAX Request
+	// Request to download the latest version and update the system.
+}
+
+*/
