@@ -522,7 +522,7 @@ function get_openvpn_config_list(){
 		data: {"action":"getopenvpnconfiglist"},
 		dataType:"JSON",
 		success:function(data){
-			refreshOvpnDropdown(data.openvpn_file_list.split("|").filter(e => (e != "")))
+			refreshOvpnDropdown(data.openvpn_file_list.split("|").filter(e => (e != "")), data.selected_open_vpn_file);
 			//updateDropdowns(data.openvpn_file_list.split("|").filter(e => (e != "")), data.selected_open_vpn_file, data.tunnel_type)
 		}
 	});

@@ -397,7 +397,7 @@ function updateDropdowns(openvpn_file_list, open_vpn_file_selected, tunnel_type_
 
 }
 
-function refreshOvpnDropdown(openvpn_file_list)
+function refreshOvpnDropdown(openvpn_file_list, open_vpn_file_selected)
 {
 	// Construct HTML Options first for openvpn dropdown list
 	var array_openvpn_file_list = [];
@@ -411,6 +411,7 @@ function refreshOvpnDropdown(openvpn_file_list)
 	var sc_instance = M.FormSelect.getInstance(sc_elem);
 	sc_instance.el.innerHTML = html_openvpn_file_list;
 	$(sc_elem).formSelect();
+
 	sc_instance.el.value = open_vpn_file_selected;
 	sc_instance.input.value = open_vpn_file_selected;
 	$(sc_elem).formSelect();
