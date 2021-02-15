@@ -1,6 +1,9 @@
 main.go
 wireguard-go
+buildscript.cmd
+tunhub.txt
 v2ray/*
+output/*
 redsock/*
-config/*
+config/bak.txt
 ovpn/*
