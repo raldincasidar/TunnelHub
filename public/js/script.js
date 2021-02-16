@@ -142,6 +142,7 @@ function rcd_navigate(page)
 	    			}
 	    			else
 	    			{
+						
 	    				$('.sidenav-trigger').addClass('hide');
 	    				$('.rcd-back-button').removeClass('hide');
 	    			}
