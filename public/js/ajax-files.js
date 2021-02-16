@@ -429,15 +429,18 @@ function disconnectvpn(){
 	});
 }
 function logout(){
-	$.ajax({
-		url: "/api",
-		method: "POST",
-		data: {action: "logout"},
-		dataType:"JSON",
-		success:function(data){
-			location.href = data.msg
-		}
-	});
+	if(confirm("Do you want to logout this page?")){
+		$.ajax({
+			url: "/api",
+			method: "POST",
+			data: {action: "logout"},
+			dataType:"JSON",
+			success:function(data){
+				location.href = data.msg
+			}
+		});
+	}
+	
 }
 
 function loginTunHub(){

@@ -197,10 +197,13 @@ function capitalizeFirstLetter(string) {
 }
 
 setInterval(function(){
-	var textarea1 = document.getElementById('ovpn_textarea');
-	textarea1.scrollTop = textarea1.scrollHeight;
-	var textarea = document.getElementById('http_textarea');
-	textarea.scrollTop = textarea.scrollHeight;
+	let url = document.URL;
+	if (url.includes("dashboard")){
+		var textarea1 = document.getElementById('ovpn_textarea');
+		textarea1.scrollTop = textarea1.scrollHeight;
+		var textarea = document.getElementById('http_textarea');
+		textarea.scrollTop = textarea.scrollHeight;
+	}
 },500);
 
 // Bytes to kilobytes to GB Converter
