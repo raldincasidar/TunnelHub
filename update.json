@@ -1,4 +1,6 @@
 {
     "Version": "1.0.0.1",
-    "UpdateURL": "https://github.com/tsunaweak/TunnelHub/raw/main/tunnelhub.tar"
+    "UpdateURL": "https://github.com/tsunaweak/TunnelHub/raw/main/tunnelhub.tar",
+    "ReleaseDate": "02/21/2021",
+    "ReleaseType":"Beta"
 }
