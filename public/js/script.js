@@ -11,11 +11,8 @@ window.onpopstate = function(event) {
 
 // Load All Document First
 window.onload = function(){
-
-
 	// Run Check for URL
-
-	$.get('/api', function(data, status){
+	$.get('/dashboard', function(data, status){
 		console.log(status);
 		setTimeout(function(){
 			check_for_url();
@@ -316,6 +313,9 @@ function initialize_settings_form(data)
 	$('#proxy_port').val(data.saved_http_port);
 	$('#payload').val(data.saved_payload);
 	$('#sni').val(data.saved_sni);
+	$('#lblVersion').html(data.Version);
+	$('#lblType').html(data.ReleaseType);
+	$('#lblVerDate').html(data.ReleaseDate);
 }
 
 function inject_status()

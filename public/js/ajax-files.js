@@ -482,6 +482,10 @@ function get_initialize_settings_form(){
 				saved_http_port: data.proxy_port, // STRING
 				saved_payload: data.payload, // STRING
 				saved_sni: data.sni, // STRING
+				Version: data.Version, // STRING
+				ReleaseType: data.ReleaseType, // STRING
+				ReleaseDate: data.ReleaseDate, // STRING
+
 			});
 			updateDropdowns(data.openvpn_file_list.split("|").filter(e => (e != "")), data.selected_open_vpn_file, data.tunnel_type)
 		}
@@ -590,41 +594,71 @@ function uninstall_router()
 	}
 }
 
-
-/*
-
 // CHECK UPDATE SCRIPT BUT NO DOWNLOAD, JUST CHECK IF UPDATE IS AVAILABLE
 function check_update()
 {
-	// GET AJAX
-	// Just check for updates but dont download yet
+	//POST AJAX
+	//Just check for updates but dont download yet
+	$.ajax({
+		url:"/api",
+		method:"POST",
+		data:{"action":"checkupdate"},
+		dataType:"JSON",
+		success:function(data){
+			if(data.error == null || data.error == ""){
+				show_new_update_ui({
+					version: data.Version,  // The Update version (eg. v1.1)
+					label: data.ReleaseType,      // The update label (eg. Alpha, Beta, Stable)
+					date: data.ReleaseDate        // The release date of the update (eg. January 01, 2021)
+				})
+			}else{
+				if(data.error.includes("Error found:")){
+					show_notice("no-no-new-update"); 
+				}else{
+					show_notice("no-connection"); 
+				}
+				
+			}
+		}
+	});
 
 
+	//RETURN VALUE HANDLER FUNCTIONS. 
 
-	// RETURN VALUE HANDLER FUNCTIONS. 
 
+	//!! USE ONLY ONE FUNCTION BELOW !!
 
-	// !! USE ONLY ONE FUNCTION BELOW !!
-
-	// If new update was detected, fetch the meta data and use this function
-	show_new_update_ui({
-		version: UPDATE_VERSION,  // The Update version (eg. v1.1)
-		label: UPDATE_LABEL,      // The update label (eg. Alpha, Beta, Stable)
-		date: RELEASE_DATE        // The release date of the update (eg. January 01, 2021)
-	})
+	//If new update was detected, fetch the meta data and use this function
+	// show_new_update_ui({
+	// 	version: UPDATE_VERSION,  // The Update version (eg. v1.1)
+	// 	label: UPDATE_LABEL,      // The update label (eg. Alpha, Beta, Stable)
+	// 	date: RELEASE_DATE        // The release date of the update (eg. January 01, 2021)
+	// })
 
 	// If no update was fetch notify the user by using this function
-	show_notice(error_type); 	  // Possible values: 
-	                         	  //           "no-new-update" - If the version is at the latest version and dont need an update
-	                         	  //           "no-connection" - If we can't reach the server
+	// show_notice(error_type); 	  // Possible values: 
+	//                          	            "no-new-update" - If the version is at the latest version and dont need an update
+	//                          	            "no-connection" - If we can't reach the server
 }
 
 
 
 function download_and_update()
 {
-	// GET AJAX Request
+	// POST AJAX Request
 	// Request to download the latest version and update the system.
+	$.ajax({
+		url:"/api",
+		method:"POST",
+		data:{"action":"updateSoftware"},
+		dataType:"JSON",
+		success:function(data){
+			if(data.error == null || data.error == ""){
+				show_notice(data.msg, "success"); 
+			}else{
+				show_notice(data.error, "error"); 
+				
+			}
+		}
+	});
 }
-
-*/
